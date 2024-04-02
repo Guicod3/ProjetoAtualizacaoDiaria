@@ -36,15 +36,14 @@ else:
 #SAIDA
 print('-------------------------------------------------------------------')
 print('|                       ATUALIZAÇÕES DO DIA                       |')
-print(f'|                 {diaSemana}, {dataFormatada}                 |')
+print(f'|                 {diaSemana}, {dataFormatada}                   |')
 print('-------------------------------------------------------------------')
 print(f'\n                        {saudacaoDoDia}, usuário.                 ')
 print('\n-------------------------------------------------------------------')
 print('\n                      COTAÇÂO DAS MOEDAS HOJE                      ')
 print(f'        Dólar: R${valorDolar:.2f} | Euro: R${valorEuro:.2f} | Bitcoin: R${valorBitcoin:.2f}')
 print('\n-------------------------------------------------------------------')
-
-
+input('Digite algo para sair: ')
 
 
 
