@@ -23,6 +23,15 @@ if responseCot.status_code == 200:
 else:
     print('[ERRO] Falha na Comunicação API(COTAÇÃO)')
 
+#LocalizarIPPublico
+#ipPublico = requests.get('https://api.ipify.org/').text
+
+#API DE GEOLOCALIZACAO POR IP
+urlGeo = 'https://api.hgbrasil.com/geoip?&key=7d9fedb4&address=remote&precision=false'
+geolocalRequest = requests.get(urlGeo)
+geoLocalJson = geolocalRequest.json
+print(geoLocalJson)
+
 
 #VerificarBOMDIABOATARDEOUBOANOITE
 if horaAtual >= 4 and horaAtual < 12:
