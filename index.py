@@ -23,18 +23,30 @@ if responseCot.status_code == 200:
 else:
     print('[ERRO] Falha na Comunicação API(COTAÇÃO)')
 
-#LocalizarIPPublico
-#ipPublico = requests.get('https://api.ipify.org/').text
 
-#API DE GEOLOCALIZACAO POR IP
-urlGeo = 'https://api.hgbrasil.com/geoip?&key=7d9fedb4&address=remote&precision=false'
-geolocalRequest = requests.get(urlGeo)
-geoLocalJson = geolocalRequest.json
-print(geoLocalJson)
+#API DE TEMPO E LOCAL
+import requests
+urlTEMP = 'https://api.hgbrasil.com/weather?key=7d9fedb4&user_ip=remote'
+tempRequest = requests.get(urlTEMP)
+if tempRequest.status_code == 200:
+    tempJson = tempRequest.json()
+    temperaturaAtual = tempJson["results"]['temp']#1
+    ultAtualizacao = tempJson["results"]['time']#ultimo
+    descricaoTempo = tempJson["results"]['description']#2
+    cidade = tempJson["results"]['city'] #ok
+    quantidadeChuva = tempJson["results"]['rain']#5
+    TempMax = tempJson["results"]['forecast'][0]['max']#3
+    TempMin = tempJson["results"]['forecast'][0]['min']#4
+    probChuva = tempJson["results"]['forecast'][0]['rain_probability']#6
+else:
+    print('[ERRO] Falha na Comunicação API(Tempo)')
 
+#logica para erro de temp max e atual
+if temperaturaAtual > TempMax:
+    TempMax = temperaturaAtual
 
 #VerificarBOMDIABOATARDEOUBOANOITE
-if horaAtual >= 4 and horaAtual < 12:
+if horaAtual > 24 and horaAtual < 12:
     saudacaoDoDia = 'Bom dia'
 elif horaAtual >= 12 and horaAtual < 18:
     saudacaoDoDia = 'Boa tarde'
@@ -45,14 +57,19 @@ else:
 #SAIDA
 print('-------------------------------------------------------------------')
 print('|                       ATUALIZAÇÕES DO DIA                       |')
-print(f'|                 {diaSemana}, {dataFormatada}                   |')
+print(f'|                    {cidade}                    |')
+print(f'|                  {diaSemana}, {dataFormatada}                 |')
 print('-------------------------------------------------------------------')
 print(f'\n                        {saudacaoDoDia}, usuário.                 ')
 print('\n-------------------------------------------------------------------')
 print('\n                      COTAÇÂO DAS MOEDAS HOJE                      ')
 print(f'        Dólar: R${valorDolar:.2f} | Euro: R${valorEuro:.2f} | Bitcoin: R${valorBitcoin:.2f}')
 print('\n-------------------------------------------------------------------')
-input('Digite algo para sair: ')
-
+print('\n                          TEMPERATURA ATUAL                        ')
+print(f'                        {descricaoTempo}')
+print(f'                    {temperaturaAtual}°C | Max: {TempMax}°C | Min: {TempMin}°C')
+print(f'                     Chuva(mm): {quantidadeChuva} | Chuva %: {probChuva}')
+print(f'                        Atualizado em: {ultAtualizacao}')
+print('\n-------------------------------------------------------------------')
 
 
