@@ -116,12 +116,12 @@ def menuSelecao1(a):
 
 
 def menuSelecao2(a):
-    if a.isdigit() and int(a) <= 3 and int(a) > 0:
+    if a.isdigit() and int(a) <= 4 and int(a) > 0:
         a = int(a)
         if a == 1:
             print(newsPoliticsText)
             b = input('\nDigite o número da notícia para ver link e [4] p/ outra categoria: ')
-            if b.isdigit() and int(b) <= 3 and int(b) > 0:
+            if b.isdigit() and int(b) <= 4 and int(b) > 0:
                 b = int(b)
                 if b == 1:
                     link = noticia['results'][0]['link']
@@ -141,7 +141,7 @@ def menuSelecao2(a):
         elif a == 2:
             print(newsSportsText)
             b = input('\nDigite o número da notícia para ver link e [4] p/ outra categoria: ')
-            if b.isdigit() and int(b) <= 3 and int(b) > 0:
+            if b.isdigit() and int(b) <= 4 and int(b) > 0:
                 b = int(b)
                 if b == 1:
                     link = newsSports['results'][0]['link']
@@ -161,7 +161,7 @@ def menuSelecao2(a):
         elif a == 3:
             print(newsWorldText)
             b = input('\nDigite o número da notícia para ver link e [4] p/ outra categoria: ')
-            if b.isdigit() and int(b) <= 3 and int(b) > 0:
+            if b.isdigit() and int(b) <= 4 and int(b) > 0:
                 b = int(b)
                 if b == 1:
                     link = newsWorld['results'][0]['link']
