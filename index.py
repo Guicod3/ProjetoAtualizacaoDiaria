@@ -83,7 +83,7 @@ if temperaturaAtual > TempMax:
     TempMax = temperaturaAtual
 
 #VerificarBOMDIABOATARDEOUBOANOITE
-if horaAtual > 24 and horaAtual < 12:
+if horaAtual >= 1 and horaAtual < 12:
     saudacaoDoDia = 'Bom dia'
 elif horaAtual >= 12 and horaAtual < 18:
     saudacaoDoDia = 'Boa tarde'
